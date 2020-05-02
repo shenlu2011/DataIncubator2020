@@ -10,10 +10,7 @@ var y = d3.scale.linear().range([height-pad, pad]);
 var xAxis = d3.svg.axis().scale(x).orient("bottom");
 var yAxis = d3.svg.axis().scale(y).orient("left");
 
-var svg = d3.select("#graph")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+var svg = d3.select('#graph') .append('svg') .style('width', 1024) .style('height', 768);
 
 
 svg.append('text') 
