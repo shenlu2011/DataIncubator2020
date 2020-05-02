@@ -1,29 +1,14 @@
 <!DOCTYPE html>
-<title></title>
-<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<style>
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #eee;
-    shape-rendering: crispEdges;
-  }
+<meta charset="utf-8">
+<title>Hierarchical Edge Bundling</title>
+<link rel="stylesheet" type="text/css" href="./inspector.css">
+<body>
+<script type="module">
 
-  .axis text {
-    font-size: 11px;
-  }
+import define from "./index.js";
+import {Runtime, Library, Inspector} from "./runtime.js";
 
-  .bar {
-    fill: steelblue;
-  }
-</style>
+const runtime = new Runtime();
+const main = runtime.module(define, Inspector.into(document.body));
 
-<div class="container">
-  <div class="row">
-    <div id="graph" class="span12">
-    </div>
-  </div>
-</div>
-
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="code.js"></script>
+</script>
