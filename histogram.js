@@ -15,25 +15,18 @@ var svg = d3.select("#graph")
         .attr("width", width)
         .attr("height", height);
 
-d3.json('histogram-hours.json', function (data) {
 
-    data = d3.keys(data).map(function (key) {
-        return {bucket: Number(key),
-                N: data[key]};
-    });
+svg.append('text') 
+    .text("A picture!") 
+    .attr({x: 10,
+            y: 150,
+            'text-anchor': 'start'});
 
-    x.domain(data.map(function (d) { return d.bucket; }));
-    y.domain([0, d3.max(data, function (d) { return d.N; })]);
-
-    svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(0, "+(height-pad)+")")
-        .call(xAxis);
-
-    svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate("+(left_pad-pad)+", 0)")
-        .call(yAxis);
+svg.append('line') 
+    .attr({x1: 10,
+            y1: 10,
+            x2: 100,
+            y2: 100,
+            stroke: 'blue', 'stroke-width': 3});
 
 
-});
