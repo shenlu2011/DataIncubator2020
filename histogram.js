@@ -35,18 +35,5 @@ d3.json('histogram-hours.json', function (data) {
         .attr("transform", "translate("+(left_pad-pad)+", 0)")
         .call(yAxis);
 
-    svg.selectAll('rect')
-        .data(data)
-        .enter()
-        .append('rect')
-        .attr('class', 'bar')
-        .attr('x', function (d) { return x(d.bucket); })
-        .attr('width', x.rangeBand())
-        .attr('y', height-pad)
-        .transition()
-        .delay(function (d) { return d.bucket*20; })
-        .duration(800)
-        .attr('y', function (d) { return y(d.N); })
-        .attr('height', function (d) { return height-pad - y(d.N); });
 
 });
