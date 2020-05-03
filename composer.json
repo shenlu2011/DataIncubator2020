@@ -1,1 +1,5 @@
-[{}]
+{
+    "require": {
+        "phpunit/php-timer": "^3.1"
+    }
+}
