@@ -55,30 +55,30 @@ d3.csv("us-pop.csv", function(data) {
             }		
         }
 
-    // Bind Data 
-    svg.selectAll("path")
-        .data(json.features)
-        .enter()    
-        .append("path")
-        .attr("class", "state-boundary")
-        .attr("d", path)
-        .attr("text", json.properties.name)
-        .style("fill", function(d) { return color(d.properties.value); })
-        .on("mouseover", function(d) {   
-            tooltip.transition()
-               .duration(200)
-               .style("opacity", .9);
-            tooltip.html("<strong>" + d.properties.name + "</strong>" + "<br/>" + "Population: " +
-                        (d.properties.value).toLocaleString() + " Million")			
-			   .style("left", (d3.event.pageX + 5) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");		       
-        })
-        .on("mouseout", function(d) {
-          tooltip.transition()
-               .duration(500)
-               .style("opacity", 0);
+        // Bind Data 
+        svg.selectAll("path")
+            .data(json.features)
+            .enter()    
+            .append("path")
+            .attr("class", "state-boundary")
+            .attr("d", path)
+            .attr("text", function(d) { return d.properties.name; })
+            .style("fill", function(d) { return color(d.properties.value); })
+            .on("mouseover", function(d) {   
+                tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+                tooltip.html("<strong>" + d.properties.name + "</strong>" + "<br/>" + "Population: " +
+                            (d.properties.value).toLocaleString() + " Million")			
+    			   .style("left", (d3.event.pageX + 5) + "px")
+                   .style("top", (d3.event.pageY - 28) + "px");		       
+            })
+            .on("mouseout", function(d) {
+              tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
 
-        });
+            });
         
     
     });
