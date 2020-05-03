@@ -31,6 +31,8 @@ body {
 </style>
 <body>
     <h2 align="center">Energy Per Capita (2000 - 2010)</h2>
+    <div id="graph">
+    </div>
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>
 
@@ -63,7 +65,7 @@ var line = d3.svg.line()
     .x(function(d) { return x(d.year); })
     .y(function(d) { return y(d.epc); });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
