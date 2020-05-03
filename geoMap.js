@@ -62,6 +62,7 @@ d3.csv("us-pop.csv", function(data) {
         .append("path")
         .attr("class", "state-boundary")
         .attr("d", path)
+        .attr("text", json.properties.name)
         .style("fill", function(d) { return color(d.properties.value); })
         .on("mouseover", function(d) {   
             tooltip.transition()
@@ -77,16 +78,7 @@ d3.csv("us-pop.csv", function(data) {
                .duration(500)
                .style("opacity", 0);
 
-    svg.selectAll("path")
-        .data(json.features)
-        .enter()    
-        .append("text")
-        .attr("class", "state-boundary")
-        .attr("d", path)
-        .text(tooltip.html("<strong>" + d.properties.name + "</strong>" ));
-
-
-      });
+        });
         
     
     });
