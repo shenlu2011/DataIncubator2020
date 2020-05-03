@@ -98,7 +98,7 @@ d3.csv("output.csv", function(error, data) {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
-  .append("text")
+      .append("text")
       .attr("transform", "rotate(0)")
       .attr("x", width + 50)
       .attr("dy", ".71em")
@@ -109,33 +109,33 @@ d3.csv("output.csv", function(error, data) {
       .attr("class", "y axis")
       .call(yAxis)
 
-        .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("x", -230)
-        .attr("y", -40)
-        .style("text-anchor", "middle")
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -230)
+      .attr("y", -40)
+      .style("text-anchor", "middle")
       .text("Million BTUs Per Person");
 
   var city = svg.selectAll(".city")
       .data(cities)
-    .enter().append("g")
+      .enter().append("g")
       .attr("class", "city");
 
-   var path =  city.append("path")
-        .attr("class", "line")
-     .attr("d", function(d) { return line(d.values); })
-      .style("stroke", function(d) { return color(d.name); });
+  var path =  city.append("path")
+    .attr("class", "line")
+    .attr("d", function(d) { return line(d.values); })
+    .style("stroke", function(d) { return color(d.name); });
 
 
-       var totalLength = path.node().getTotalLength();
+     var totalLength = path.node().getTotalLength();
 
-    path
-      .attr("stroke-dasharray", totalLength + " " + totalLength)
-      .attr("stroke-dashoffset", totalLength)
-      .transition()
-        .duration(2000)
-        .ease("linear")
-        .attr("stroke-dashoffset", 0);
+  path
+    .attr("stroke-dasharray", totalLength + " " + totalLength)
+    .attr("stroke-dashoffset", totalLength)
+    .transition()
+    .duration(2000)
+    .ease("linear")
+    .attr("stroke-dashoffset", 0);
 
   city.append("text")
       .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
