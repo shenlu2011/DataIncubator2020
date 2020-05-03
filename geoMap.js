@@ -79,7 +79,10 @@ d3.csv("us-pop.csv", function(data) {
 
     svg.selectAll("path")
         .data(json.features)
-        .enter()
+        .enter()    
+        .append("path")
+        .attr("class", "state-boundary")
+        .attr("d", path)
         .append("text")
         .attr("transform", "rotate(0)")
         .attr("x", 0)
