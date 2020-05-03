@@ -24,11 +24,11 @@ var color = d3.scale.quantize()
             "rgb(0,90,50)"]);
 
  // Define Tooltip
- var tooltip = d3.select("body").append("div")
+ var tooltip = d3.select("#graph").append("div")
      .attr("class", "tooltip")
 								
 // Define SVG
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
    .append("g")
