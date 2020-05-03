@@ -76,6 +76,18 @@ d3.csv("us-pop.csv", function(data) {
           tooltip.transition()
                .duration(500)
                .style("opacity", 0);
+
+    svg.selectAll("path")
+        .data(json.features)
+        .enter()
+        .append("text")
+        .attr("transform", "rotate(0)")
+        .attr("x", 0)
+        .attr("y", 0)
+        .style("text-anchor", "middle")
+        .text(d.properties.name);
+
+
       });
         
     
