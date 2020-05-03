@@ -80,10 +80,10 @@ d3.csv("us-pop.csv", function(data) {
     svg.selectAll("path")
         .data(json.features)
         .enter()    
-        .append("path")
+        .append("text")
         .attr("class", "state-boundary")
         .attr("d", path)
-        .text(d.properties.name);
+        .text(tooltip.html("<strong>" + d.properties.name + "</strong>" ));
 
 
       });
