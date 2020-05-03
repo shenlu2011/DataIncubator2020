@@ -83,11 +83,6 @@ d3.csv("us-pop.csv", function(data) {
         .append("path")
         .attr("class", "state-boundary")
         .attr("d", path)
-        .append("text")
-        .attr("transform", "rotate(0)")
-        .attr("x", 0)
-        .attr("y", 0)
-        .style("text-anchor", "middle")
         .text(d.properties.name);
 
 
