@@ -62,7 +62,7 @@ d3.csv("us-pop.csv", function(data) {
             .append("path")
             .attr("class", "state-boundary")
             .attr("d", path)
-            .attr("text", function(d) { return d.properties.name; })
+            .attr("text", function(d) { return tooltip.html("<strong>" + d.properties.name + "</strong>"); })
             .style("fill", function(d) { return color(d.properties.value); })
             .on("mouseover", function(d) {   
                 tooltip.transition()
