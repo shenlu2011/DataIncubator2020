@@ -43,9 +43,9 @@ var svg = d3.select("#graph").append("svg")
 
     svg.append('line') 
         .attr({x1: 5,
-            y1: 625,
+            y1: 525,
             x2: 1060,
-            y2: 625,
+            y2: 525,
             stroke: 'blue', 'stroke-width': 3});
     
 // Load Data
