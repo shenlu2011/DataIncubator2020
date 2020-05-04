@@ -55,12 +55,12 @@ return function module() {
     selection.each(function() {
 
       // Create scale if not defined by user
-      //if (!scale) {
+      if (!scale) {
         scale = d3.scale.linear().domain([min, max]);
-      //}
+      }
 
       // Start value
-      value = scale.domain()[0]; //value || scale.domain()[0];
+      value = new Date(2020,01,01); //scale.domain()[0]; //value || scale.domain()[0];
 
       // DIV container
       var div = d3.select(this).classed("d3-slider d3-slider-" + orientation, true);
