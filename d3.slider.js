@@ -110,7 +110,7 @@ return function module() {
 
           var width = 100 - parseFloat(formatPercent(scale(value[ 1 ])));
 
-          alert(" scale is " + scale(value[0]) + "," + scale(value[1]);
+          window.alert(" scale is " + scale(value[0]) + "," + scale(value[1]);
 
 
           handle2.style("left", formatPercent(scale(value[ 1 ])));
