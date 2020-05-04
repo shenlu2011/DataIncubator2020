@@ -71,6 +71,7 @@ d3.csv("us-pop.csv", function(data) {
             .append("path")
             .attr("class", "state-boundary")
             .attr("d", path)
+            .attr("text", function(d){return d.properties.name})
            ;
         
     
