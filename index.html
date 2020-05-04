@@ -45,11 +45,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <script src="https://d3js.org/topojson.v0.min.js"></script>
     
-    <script src="d3.slider.js"></script>
-    <script>
-      d3.select('#slider10').call(d3.slider().scale(d3.time.scale().domain([new Date(1984,1,1), new Date(2014,1,1)])).axis(d3.svg.axis()));
-    </script>
-    
+
   </head>
   <body>
     <h1 style = "text-align:center; color:steelblue"><bold>Geomapping Example: US by Populations</bold></h1>
@@ -57,6 +53,10 @@
       <h2>Calendar</h2>
       <div id="slider10"></div>
     </div>
+    <script src="d3.slider.js"></script>
+    <script>
+      d3.select('#slider10').call(d3.slider().scale(d3.time.scale().domain([new Date(2020,01,20), new Date(2020,04,23)])).axis(d3.svg.axis()));
+    </script>
 
 
 
