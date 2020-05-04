@@ -110,8 +110,6 @@ return function module() {
 
           var width = 100 - parseFloat(formatPercent(scale(value[ 1 ])));
 
-          
-
           handle2.style("left", formatPercent(scale(value[ 1 ])));
           divRange.style("right", width+"%");
           drag.on("drag", onDragHorizontal);
