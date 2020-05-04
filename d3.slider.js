@@ -157,7 +157,7 @@ return function module() {
         if (typeof axis === "boolean") {
 
           axis = d3.svg.axis()
-              .ticks(d3.time.minute, 60*24); //.ticks(Math.round(sliderLength / 100))
+              .ticks(1); //.ticks(Math.round(sliderLength / 100))
               .tickFormat(tickFormat)
               .orient((orientation === "horizontal") ? "bottom" :  "right");
 
