@@ -81,21 +81,21 @@ d3.csv("us-pop.csv", function(data) {
     
        
     svg.selectAll("text")
-       .data(data)
-       .enter()
-     .append("text") // append text
-       .attr("x", function(d) {
-               return ((d3.event.pageX + 5) + "px");
-       })
-       .attr("y", function(d) {
-               return ((d3.event.pageY + 5) + "px");
-       })
-       .attr("dy", -7) // set y position of bottom of text
-      .style("fill", "black") // fill the text with the colour black
-      .attr("text-anchor", "middle") // set anchor y justification
-      .text(function(d) {return d.properties.name;}); // define the text to display
+        .data(json.features)
+        .enter()
+        .append("svg:text")
+        .text(function(d){
+            return d.properties.name;
+        })
+        .attr("x", function(d){
+            return path.centroid(d)[0];
+        })
+        .attr("y", function(d){
+            return  path.centroid(d)[1];
+        })
+        .attr("text-anchor","middle")
+        .attr('font-size','6pt');
 
-        
     
     });
 });
