@@ -35,14 +35,14 @@ var svg = d3.select("#graph").append("svg")
 
 
     svg.append('line') 
-        .attr({x1: 5,
-            y1: 5,
+        .attr({x1: 8,
+            y1: 8,
             x2: 1060,
-            y2: 5,
+            y2: 8,
             stroke: 'blue', 'stroke-width': 3});
     svg.append('text')
         .text('Calendar')
-        .attr({x:5, y:5,'text-anchor':'start'})
+        .attr({x:8, y:8,'text-anchor':'start'})
 
     
 // Load Data
