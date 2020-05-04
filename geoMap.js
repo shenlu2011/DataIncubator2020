@@ -74,18 +74,14 @@ d3.csv("us-pop.csv", function(data) {
            ;
 
 
-        var group = canvas.selectAll('g')
+        svg.selectAll('g')
             .data(json.features)
             .enter()
             .append('g')
 
-        var areas = group.append('path')
-                 .attr('d',path)
-                 .attr('class','area')
-                 .attr('fill','steelblue');
 
 
-        group.append('text')
+        svg.append('text')
              .attr('text',function(d){return d.properties.name;})
              .attr('x', function(d){ return path.centroid(d)[0];})
              .attr('y', function(d){ return path.centroid(d)[1];})
