@@ -60,7 +60,7 @@ return function module() {
       }
 
       // Start value
-      value = new Date(2020,01,01); //scale.domain()[0]; //value || scale.domain()[0];
+      value = scale.domain()[0]; //value || scale.domain()[0];
 
       // DIV container
       var div = d3.select(this).classed("d3-slider d3-slider-" + orientation, true);
