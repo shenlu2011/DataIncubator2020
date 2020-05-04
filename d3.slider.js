@@ -55,9 +55,9 @@ return function module() {
     selection.each(function() {
 
       // Create scale if not defined by user
-      if (!scale) {
+      //if (!scale) {
         scale = d3.scale.linear().domain([min, max]);
-      }
+      //}
 
       // Start value
       value = scale.domain()[0]; //value || scale.domain()[0];
