@@ -1,10 +1,12 @@
 var width = 960,
     height = 500;
 
-var projection = d3.geo.mercator()
+var projection = d3.geo.albersUsa()
     .center([0, 5 ])
     .scale(200)
     .rotate([-180,0]);
+
+
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
