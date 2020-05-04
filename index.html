@@ -12,54 +12,17 @@
     <script src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <script src="https://d3js.org/topojson.v0.min.js"></script>
+    <script src="d3.slider.js"></script>
     <link rel="stylesheet" href="d3.slider.css" />  
-  <style>
-
-    body {
-      font-family: Verdana,Arial,sans-serif;
-    }
-
-    h2 {
-      font-size: 1.2em;
-      margin: 60px 0 5px 0;
-    }
-
-    .wrapper {
-      width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .wrapper > div {
-      margin: 35px 0;
-    }
-
-    #slider8 {
-      height: 250px;
-    }
-
-    #slider9 {
-      height: 250px;
-    }
-
-
-  </style>
-
-  <div class="wrapper">
+  
   </head>
   <body>
     <h1 style = "text-align:center; color:steelblue"><bold>Geomapping Example: US by Populations</bold></h1>
     <div class="wrapper">
-      <h2>Slider with dates</h2>
-      <code>d3.slider().scale(d3.time.scale().domain([new Date(1984,1,1), new Date(2014,1,1)])).axis(d3.svg.axis())</code>
+      <h2>Calendar</h2>
       <div id="slider10"></div>
     </div>
 
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="d3.slider.js"></script>
-  <script>
-    d3.select('#slider10').call(d3.slider().scale(d3.time.scale().domain([new Date(1984,1,1), new Date(2014,1,1)])).axis(d3.svg.axis()));
-  </script>
 
 
     <div id="graph"></div>
