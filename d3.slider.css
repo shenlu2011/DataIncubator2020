@@ -1,21 +1,4 @@
 
-.wrapper {
-  width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.wrapper > div {
-  margin: 35px 0;
-}
-
-#slider8 {
-  height: 250px;
-}
-
-#slider9 {
-  height: 250px;
-}
 
 .d3-slider {
     position: relative;
