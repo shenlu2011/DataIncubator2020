@@ -75,7 +75,7 @@ d3.csv("us-pop.csv", function(data) {
 
 
         var group = canvas.selectAll('g')
-            .data(data.features)
+            .data(json.features)
             .enter()
             .append('g')
 
