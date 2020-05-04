@@ -60,7 +60,7 @@ return function module() {
       }
 
       // Start value
-      value = value || scale.domain()[0];
+      value = scale.domain()[0]; //value || scale.domain()[0];
 
       // DIV container
       var div = d3.select(this).classed("d3-slider d3-slider-" + orientation, true);
@@ -157,7 +157,7 @@ return function module() {
         if (typeof axis === "boolean") {
 
           axis = d3.svg.axis()
-              .ticks(Math.round(sliderLength / 120))
+              .ticks(Math.round(sliderLength / 100))
               .tickFormat(tickFormat)
               .orient((orientation === "horizontal") ? "bottom" :  "right");
 
