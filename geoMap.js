@@ -85,10 +85,10 @@ d3.csv("us-pop.csv", function(data) {
        .enter()
      .append("text") // append text
        .attr("x", function(d) {
-               return (d3.event.pageX +1);
+               return ((d3.event.pageX + 5) + "px");
        })
        .attr("y", function(d) {
-               return (d3.event.pageY + 1);
+               return ((d3.event.pageY + 5) + "px");
        })
        .attr("dy", -7) // set y position of bottom of text
       .style("fill", "black") // fill the text with the colour black
