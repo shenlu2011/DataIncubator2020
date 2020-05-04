@@ -44,7 +44,7 @@ var svg = d3.select("#graph").append("svg")
         .text('Calendar')
         .attr({x:12, y:12,'text-anchor':'start'})
 
-    
+
 // Load Data
 d3.csv("us-pop.csv", function(data) {
     color.domain([
@@ -71,9 +71,26 @@ d3.csv("us-pop.csv", function(data) {
             .append("path")
             .attr("class", "state-boundary")
             .attr("d", path)
-            .attr("text", function(d){return d.properties.name})
            ;
-        
+
+
+        var group = canvas.selectAll('g')
+            .data(data.features)
+            .enter()
+            .append('g')
+
+        var areas = group.append('path')
+                 .attr('d',path)
+                 .attr('class','area')
+                 .attr('fill','steelblue');
+
+
+        group.append('text')
+             .attr('text',function(d){return d.properties.name;})
+             .attr('x', function(d){ return path.centroid(d)[0];})
+             .attr('y', function(d){ return path.centroid(d)[1];})
+             .style("font-size","14px");
+                
     
     });
 });
