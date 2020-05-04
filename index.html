@@ -102,10 +102,14 @@ function setMap() {
       .attr("height", height);
 
 
-  svg.append("path")    // use path generator to draw a graticule
-      .datum(graticule)
-      .attr("class", "graticule")
-      .attr("d", path);
+  svg.selectAll("path")
+        .data(json.features)
+        .enter()    
+        .append("path")
+        .attr("class", "state-boundary")
+        .attr("d", path)
+        .style("fill", function(d) { return color(d.properties.value); })
+       ;
 
   //loadData();  // let's load our data next
 
