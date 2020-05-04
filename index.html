@@ -101,14 +101,6 @@ function setMap() {
       .attr("width", width)
       .attr("height", height);
 
-  svg.append("defs").append("path")   // prepare some svg for outer container of svg elements
-      .datum({type: "Sphere"})
-      .attr("id", "sphere")
-      .attr("d", path);
-
-  svg.append("use")   // use that svg to style with css
-      .attr("class", "stroke")
-      .attr("xlink:href", "#sphere");
 
   svg.append("path")    // use path generator to draw a graticule
       .datum(graticule)
