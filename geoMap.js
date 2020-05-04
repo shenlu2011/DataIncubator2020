@@ -78,32 +78,17 @@ d3.csv("us-pop.csv", function(data) {
                .style("opacity", 0);
       });
 
-    svg.selectAll("circle")
-       .data(json)
-       .enter()
-     .append("a")
-                  .attr("xlink:href", function(d) {
-                      return "https://www.google.com/search?q="+d.properties.name;}
-                  )
-     .append("circle")
-       .attr("cx", function(d) {
-               return d.properties.geometry.coordinates[0][0][0];
-       })
-       .attr("cy", function(d) {
-               return d.properties.geometry.coordinates[0][0][1];
-       })
-       .attr("r", 5)
-       .style("fill", "red");
+    
        
     svg.selectAll("text")
        .data(data)
        .enter()
      .append("text") // append text
        .attr("x", function(d) {
-               return d.properties.geometry.coordinates[0][0][0];
+               return (d3.event.pageX +1);
        })
        .attr("y", function(d) {
-               return d.properties.geometry.coordinates[0][0][1];
+               return (d3.event.pageY + 1);
        })
        .attr("dy", -7) // set y position of bottom of text
       .style("fill", "black") // fill the text with the colour black
