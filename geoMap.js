@@ -32,6 +32,21 @@ var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
+
+
+    svg.append('line') 
+        .attr({x1: 5,
+            y1: 5,
+            x2: 1060,
+            y2: 5,
+            stroke: 'blue', 'stroke-width': 3});
+
+    svg.append('line') 
+        .attr({x1: 5,
+            y1: 625,
+            x2: 1060,
+            y2: 625,
+            stroke: 'blue', 'stroke-width': 3});
     
 // Load Data
 d3.csv("us-pop.csv", function(data) {
