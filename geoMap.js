@@ -31,9 +31,8 @@ var color = d3.scale.quantize()
 var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-   .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.right + ")");   
-
+    .append("g")
+    
 // Load Data
 d3.csv("us-pop.csv", function(data) {
     color.domain([
@@ -54,31 +53,13 @@ d3.csv("us-pop.csv", function(data) {
 				}
             }		
         }
-
-        // Bind Data 
         svg.selectAll("path")
             .data(json.features)
             .enter()    
             .append("path")
             .attr("class", "state-boundary")
             .attr("d", path)
-            .attr("text", function(d) { return d.properties.name; })
-            .style("fill", function(d) { return color(d.properties.value); })
-            .on("mouseover", function(d) {   
-                tooltip.transition()
-                   .duration(200)
-                   .style("opacity", .9);
-                tooltip.html("<strong>" + d.properties.name + "</strong>" + "<br/>" + "Population: " +
-                            (d.properties.value).toLocaleString() + " Million")			
-    			   .style("left", (d3.event.pageX + 5) + "px")
-                   .style("top", (d3.event.pageY - 28) + "px");		       
-            })
-            .on("mouseout", function(d) {
-              tooltip.transition()
-                   .duration(500)
-                   .style("opacity", 0);
-
-            });
+           ;
         
     
     });
