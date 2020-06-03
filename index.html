@@ -22,6 +22,7 @@
           d3.select("#ref").selectAll("ul")
             .append("li")
             .data([10,20,30,40,50])
+            .text(function(d){return d;})
             .enter()
             .append("li")
             .text(function(d){return d;});
