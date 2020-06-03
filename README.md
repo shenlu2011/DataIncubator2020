@@ -1,6 +1,6 @@
-# Zoom to Bounding Box
+# Scatterplot Tour
 
-https://observablehq.com/@d3/zoom-to-bounding-box@146
+https://observablehq.com/@d3/scatterplot-tour@147
 
 View this notebook in your browser by running a web server in this folder. For
 example:
@@ -14,14 +14,14 @@ import this module directly into your application. To npm install:
 
 ~~~sh
 npm install @observablehq/runtime@4
-npm install https://api.observablehq.com/@d3/zoom-to-bounding-box.tgz?v=3
+npm install https://api.observablehq.com/@d3/scatterplot-tour.tgz?v=3
 ~~~
 
 Then, import your notebook and the runtime as:
 
 ~~~js
 import {Runtime, Inspector} from "@observablehq/runtime";
-import define from "@d3/zoom-to-bounding-box";
+import define from "@d3/scatterplot-tour";
 ~~~
 
 To log the value of the cell named “foo”:
