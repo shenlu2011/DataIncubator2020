@@ -12,20 +12,6 @@
         <li></li>
       </ul>
     </div>
-      <script>
-         d3.selectAll("h2").transition().style("color", "lightblue").duration(10000);
-      </script>
-      <script>
-         // write your d3 code here.. 
-
-
-          d3.select("#list").selectAll("li")
-            .data([10,20,30,40,50])
-            .text(function(d){return d;})
-            .enter()
-            .append("li")
-            .text(function(d){return d;});
-      </script>
 
 
          <script>
@@ -125,5 +111,21 @@
           transform = "translate(60, 60) rotate(45)">
        </rect>
       </svg>
+
+            <script>
+         d3.selectAll("h2").transition().style("color", "lightblue").duration(10000);
+      </script>
+      <script>
+         // write your d3 code here.. 
+
+
+          d3.select("#list").selectAll("li")
+            .data([10,20,30,40,50])
+            .text(function(d){return d;})
+            .enter()
+            .append("li")
+            .text(function(d){return d;});
+      </script>
+
    </body>
 </html>
