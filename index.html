@@ -6,12 +6,18 @@
 
    <body>
 
+    <div id="ref">
+    </div>
+
     <svg width = "500" height = "500">
        <rect x = "0" y = "0" width = "300" height = "200" fill="red"></rect>
        <rect x = "200" y = "100" width = "300" height = "200" fill="blue"></rect>
     </svg>
       <script>
          // write your d3 code here.. 
+
+         d3.select("#ref").append("span")
+            .text("draw rectangles");
       </script>
    </body>
 </html>
