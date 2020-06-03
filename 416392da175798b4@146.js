@@ -8,6 +8,19 @@ md`# Zoom to Bounding Box
 
 Pan and zoom, or click to zoom into a particular state using [*zoom*.transform](https://github.com/d3/d3-zoom/blob/master/README.md#zoom_transform) transitions. The bounding box is computed using [*path*.bounds](https://github.com/d3/d3-geo/blob/master/README.md#path_bounds).`
 )});
+  main.variable(observer("path")).define("path", ["d3"], function(d3){return(
+d3.geoPath()
+)});
+  main.variable(observer("us")).define("us", ["FileAttachment"], function(FileAttachment){return(
+FileAttachment("states-albers-10m.json").json()
+)});
+  main.variable(observer("topojson")).define("topojson", ["require"], function(require){return(
+require("topojson-client@3")
+)});
+  main.variable(observer("d3")).define("d3", ["require"], function(require){return(
+require("d3@5")
+)});
+  
   main.variable(observer("chart")).define("chart", ["d3","topojson","us","path"], function(d3,topojson,us,path)
 {
   const width = 975;
