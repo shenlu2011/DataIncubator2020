@@ -45,7 +45,8 @@
             return d * scaleFactor;
          })
          
-            .attr("height", barHeight - 1);
+            .attr("height", barHeight - 1)
+            .attr("fill", "green");
          
          bar.append("text")
             .attr("x", function(d) { return (d*scaleFactor); })
