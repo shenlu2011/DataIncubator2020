@@ -8,8 +8,6 @@
 
     <div id="ref">
       <ul  id="list">
-        <li>
-        </li>
       </ul>
     </div>
 
@@ -17,7 +15,7 @@
          // write your d3 code here.. 
 
 
-          d3.select("#list").selectAll("li")
+          d3.select("#list").selectAll("ul")
             .data([10,20,30,40,50])
             .text(function(d){return d;})
             .enter()
