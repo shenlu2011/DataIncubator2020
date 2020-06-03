@@ -119,11 +119,10 @@
         var svg = d3.select("body").append("svg")
           .attr("width", 100)
           .attr("height", 100);
-
-        svg.append("rect")
+        svg.selectAll("g")
+          .append("rect")
           .attr("width", 20)
-          .attr("height"m 20)
-          .attr("fill", "Green");
+          .attr("height"m 20);
 
       </script>
 
