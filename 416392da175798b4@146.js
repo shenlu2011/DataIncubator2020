@@ -10,10 +10,10 @@ Pan and zoom, or click to zoom into a particular state using [*zoom*.transform](
 )});
  
 
-d3 = require("d3@5")
-path = d3.geoPath()
-us = FileAttachment("states-albers-10m.json").json()
-topojson = require("topojson-client@3")
+main.variable(observer()).define("d3", require("d3@5"))
+main.variable(observer()).define("path", d3.geoPath())
+main.variable(observer()).define("us", FileAttachment("states-albers-10m.json").json())
+main.variable(observer()).define("topojson", require("topojson-client@3"))
 
 
   main.variable(observer("chart")).define("chart", ["d3","topojson","us","path"], function(d3,topojson,us,path)
