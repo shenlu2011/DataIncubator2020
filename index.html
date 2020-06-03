@@ -59,6 +59,7 @@
 <body>
 
 	<div id="wrapper">	
+      <div id="barchar"> </div>
    		<div id="map"></div>
       <button id="play">play</button>
       <span id="clock">year</span>
@@ -77,19 +78,11 @@
 
 Data = [4,8,15,16,23,42]
 
-Const div = d3.create(“div”)
-      .style(“font”, “10px sans-serif”)
-      .style(“text-align”, “right”)
-      .style(“color”,”white”);
-
-div.selectAll(“div”)
-  .data(data)
-  .join(“div”)
-  .style(“background”, “steelblue”)
-  .style(“padding”, “3px”)
-  .style(“margin”, “1px”)
-  .style(“width”, d=>’${d*10}px’)
-  .text(d => d);
+d3.select("barchar")
+    .style("color", "white")
+    .style("background-color", "black")
+    .html("Hello, world!")
+  .node()
 
 
 
