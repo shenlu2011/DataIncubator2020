@@ -114,16 +114,18 @@
            });
       </script>
 
+      <script>
 
-     <svg width = "100" height = "100">
+        var svg = d3.select("body").append("svg")
+          .attr("width", 100)
+          .attr("height", 100);
 
-      <rect x = "20" 
-        y = "20" 
-        width = "60" 
-        height = "60" 
-        fill = "green" 
-        transform = "translate(60, 60) rotate(45)">
-     </rect>
-      </svg>
+        svg.append("rect")
+          .attr("width", 20)
+          .attr("height"m 20)
+          .attr("fill", "Green");
+
+      </script>
+
    </body>
 </html>
