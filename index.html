@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Scatterplot Tour</title>
-<link rel="stylesheet" type="text/css" href="./inspector.css">
-<body>
-<script type="module">
+<html lang = "en">
+   <head>
+      <script src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
 
-import define from "./index.js";
-import {Runtime, Library, Inspector} from "./runtime.js";
+   <body>
 
-const runtime = new Runtime();
-const main = runtime.module(define, Inspector.into(document.body));
-
-</script>
+    <svg width = "500" height = "500">
+       <rect x = "0" y = "0" width = "300" height = "200"></rect>
+    </svg>
+      <script>
+         // write your d3 code here.. 
+      </script>
+   </body>
+</html>
