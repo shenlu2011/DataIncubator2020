@@ -72,6 +72,28 @@
 
 <script src="//d3js.org/d3.v3.min.js"></script>  
 <script src="http://d3js.org/topojson.v1.min.js"></script>
+
+<script>
+{
+Data = [4,8,15,16,23,42]
+
+Const div = d3.create(“div”)
+      .style(“font”, “10px sans-serif”)
+      .style(“text-align”, “right”)
+      .style(“color”,”white”);
+
+div.selectAll(“div”)
+  .data(data)
+  .join(“div”)
+  .style(“background”, “steelblue”)
+  .style(“padding”, “3px”)
+  .style(“margin”, “1px”)
+  .style(“width”, d=>’${d*10}px’)
+  .text(d => d);
+Return div
+}
+
+  </script>
 <script>
 
 var margin = {top: 5, right: 5, bottom: 5, left: 5},
