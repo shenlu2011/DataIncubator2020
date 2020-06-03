@@ -77,15 +77,12 @@
 <script>
 
 Data = [4,8,15,16,23,42]
-
-d3.select("barchar")
-    .style("color", "white")
-    .style("background-color", "black")
-    .html("Hello, world!")
-  .node()
-
-
-
+const table = d3.create("table");
+  const tbody = table.append("tbody");
+  tbody.append("tr").append("td").text("First!");
+  tbody.append("tr").append("td").text("Second.");
+  tbody.append("tr").append("td").text("Third.");
+  
   </script>
 <script>
 
