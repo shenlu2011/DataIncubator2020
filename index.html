@@ -22,12 +22,16 @@
 
         var svg = d3.select("body").append("svg")
                     .attr("width", 100)
-                    .attr("height", 100);
+                    .attr("height", 100)
+                    .append("g")
+                    ;
 
             svg.append("rect")
               .attr("width", 20)
               .attr("height", 20)
               .attr("fill", "green");
+
+            svg.attr("transform", "translate(60,60) rotate(45)");
 
       </script>
 
