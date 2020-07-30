@@ -1,4 +1,4 @@
-<?php
+
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -9,8 +9,6 @@
     
 </head>
 <body>
-<?php $this->beginBody() ?>
-
 <div class="wrap">
    
 
