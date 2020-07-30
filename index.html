@@ -188,47 +188,11 @@
                 setTimeout(function(){ test(); });
               });
 
-              var iframe_props = {
-                    id: 'ifrm', // id of iframe
-                    urls: { // lookup values and urls to load in iframe 
-                        'dflt': 'Popularity.html', // a default page
-                        pg0:Popularity.html,
-                        pg1:Modeling.html,
-                        pg2:LSA.html,
-                        pg3:Performance.html,
-                        pg4:Conclusion.html,
-                        pg5:References.html
-                    }
-                };
+              function menuClick(url){
+                var el = document.getElementById('ifrm');
+                el.src = url;
+              }
 
-                var dw_Util; 
-                if (!dw_Util) dw_Util = {};
-
-                // obj: link or window.location
-                dw_Util.getValueFromQueryString = function (name, obj) {
-                    obj = obj? obj: window.location; 
-                    if (obj.search && obj.search.indexOf(name != -1) ) {
-                        var pairs = obj.search.slice(1).split("&"); // name/value pairs
-                        var set;
-                        for (var i=0; pairs[i]; i++) {
-                            set = pairs[i].split("="); // Check each pair for match on name 
-                            if ( set[0] == name && set[1] ) {
-                                return set[1];
-                            }
-                        }
-                    }
-                    return '';
-                }
-
-                // example query string for 2 iframes: ?ifrm=dw&ifm2=code
-                function checkQuery4Iframe(obj) {
-                    var id = obj.id, urls = obj.urls, pg, url;
-                    // value for id in query string?
-                    pg = dw_Util.getValueFromQueryString(id);
-                    // value found for id? in list of urls? if not, use default 
-                    url = ( pg && urls[pg] )? urls[pg]: urls['dflt']
-                    document.getElementById(id).src = url;
-                }
 
       </script>
      <nav class="navbar navbar-expand-lg navbar-mainbg">
@@ -240,32 +204,33 @@
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
                 <li class="nav-item">
-                    <a class="nav-link" href="Popularity.html?ifrm=pg0"><i class="fas fa-tachometer-alt"></i>Popularity Prediction</a>
+                    <a class="nav-link" href="#" onClick=menuClick("Popularity.html")><i class="fas fa-tachometer-alt"></i>Popularity Prediction</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="Modeling.html?ifrm=pg1"><i class="far fa-address-book"></i>Data Modeling</a>
+                    <a class="nav-link" href="#" onClick=menuClick("Modeling.html")><i class="far fa-address-book"></i>Data Modeling</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="LSA.html?ifrm=pg2"><i class="far fa-clone"></i>LSA</a>
+                    <a class="nav-link" href="#" onClick=menuClick("LSA.html")><i class="far fa-clone"></i>LSA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Performance.html?ifrm=pg3"><i class="far fa-calendar-alt"></i>Performance</a>
+                    <a class="nav-link" href="#" onClick=menuClick("Performance.html")><i class="far fa-calendar-alt"></i>Performance</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Conclusion.html?ifrm=pg4"><i class="far fa-chart-bar"></i>Conclusion</a>
+                    <a class="nav-link" href="#" onClick=menuClick("Conclusion.html")><i class="far fa-chart-bar"></i>Conclusion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="References.html?ifrm=pg5"><i class="far fa-copy"></i>References</a>
+                    <a class="nav-link" href="#" onClick=menuClick("References.html")><i class="far fa-copy"></i>References</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <iframe  id='ifrm'>
+    <div stype="top:10px;left:10px;position:relative;width:800px;height:700px">
+    <iframe  id='ifrm' style="top:10px; left:10px; position:relative; width:750px; height:600px" src="Popularity.html">
 
 
 
 
 
-    </iframe>>
+    </iframe>
 
