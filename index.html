@@ -1,141 +1,221 @@
 
       <style>
-        .hoverable {
-          display: inline-block;
-          backface-visibility: hidden;
-          vertical-align: middle;
-          position: relative;
-          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-          tranform: translateZ(0);
-          transition-duration: .3s;
-          transition-property: transform;
-        }
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-        .hoverable:before {
-          position: absolute;
-          pointer-events: none;
-          z-index: -1;
-          content: '';
-          top: 100%;
-          left: 5%;
-          height: 10px;
-          width: 90%;
-          opacity: 0;
-          background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
-          background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
-          /* W3C */
-          transition-duration: 0.3s;
-          transition-property: transform, opacity;
-        }
-
-        .hoverable:hover, .hoverable:active, .hoverable:focus {
-          transform: translateY(-5px);
-        }
-
-        .hoverable:hover:before, .hoverable:active:before, .hoverable:focus:before {
-          opacity: 1;
-          transform: translateY(-5px);
-        }
-
-        @keyframes bounce-animation {
-          16.65% {
-            -webkit-transform: translateY(8px);
-            transform: translateY(8px);
+          body{
+            font-family: 'Roboto', sans-serif;
           }
-          33.3% {
-            -webkit-transform: translateY(-6px);
-            transform: translateY(-6px);
+          * {
+            margin: 0;
+            padding: 0;
           }
-          49.95% {
-            -webkit-transform: translateY(4px);
-            transform: translateY(4px);
+          i {
+            margin-right: 10px;
           }
-          66.6% {
-            -webkit-transform: translateY(-2px);
-            transform: translateY(-2px);
+          /*----------multi-level-accordian-menu------------*/
+          .navbar-logo{
+            padding: 15px;
+            color: #fff;
           }
-          83.25% {
-            -webkit-transform: translateY(1px);
-            transform: translateY(1px);
+          .navbar-mainbg{
+            background-color: #5161ce;
+            padding: 0px;
           }
-          100% {
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
+          #navbarSupportedContent{
+            overflow: hidden;
+            position: relative;
           }
-        }
-        .bounce {
-          animation-name: bounce-animation;
-          animation-duration: 2s;
-        }
-
-        /*everything below here is just setting up the page, so dont worry about it */
-        @media (min-width: 768px) {
-          .navbar {
-            text-align: center !important;
-            float: none;
+          #navbarSupportedContent ul{
+            padding: 0px;
+            margin: 0px;
+          }
+          #navbarSupportedContent ul li a i{
+            margin-right: 10px;
+          }
+          #navbarSupportedContent li {
+            list-style-type: none;
+            float: left;
+          }
+          #navbarSupportedContent ul li a{
+            color: rgba(255,255,255,0.5);
+              text-decoration: none;
+              font-size: 15px;
+              display: block;
+              padding: 20px 20px;
+              transition-duration:0.6s;
+            transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              position: relative;
+          }
+          #navbarSupportedContent>ul>li.active>a{
+            color: #5161ce;
+            background-color: transparent;
+            transition: all 0.7s;
+          }
+          #navbarSupportedContent a:not(:only-child):after {
+            content: "\f105";
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 14px;
+            font-family: "Font Awesome 5 Free";
             display: inline-block;
+            padding-right: 3px;
+            vertical-align: middle;
+            font-weight: 900;
+            transition: 0.5s;
           }
-        }
-        body {
-          background-color: black;
-          font-weight: 600;
-          text-align: center !important;
-          color: white;
-        }
+          #navbarSupportedContent .active>a:not(:only-child):after {
+            transform: rotate(90deg);
+          }
+          .hori-selector{
+            display:inline-block;
+            position:absolute;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            transition-duration:0.6s;
+            transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            background-color: #fff;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            margin-top: 10px;
+          }
+          .hori-selector .right,
+          .hori-selector .left{
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            bottom: 10px;
+          }
+          .hori-selector .right{
+            right: -25px;
+          }
+          .hori-selector .left{
+            left: -25px;
+          }
+          .hori-selector .right:before,
+          .hori-selector .left:before{
+            content: '';
+              position: absolute;
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              background-color: #5161ce;
+          }
+          .hori-selector .right:before{
+            bottom: 0;
+              right: -25px;
+          }
+          .hori-selector .left:before{
+            bottom: 0;
+              left: -25px;
+          }
 
-        nav {
-          background: none !important;
-          text-transform: uppercase;
-        }
-        nav li {
-          margin-left: 3em;
-          margin-right: 3em;
-        }
-        nav li a {
-          transition: .5s color ease-in-out;
-        }
 
-        .page-title {
-          opacity: .75 !important;
-        }
+
+
+          @media (max-width: 991px){
+            #navbarSupportedContent ul li a{
+              padding: 12px 30px;
+            }
+            .hori-selector{
+              margin-top: 0px;
+              margin-left: 10px;
+              border-radius: 0;
+              border-top-left-radius: 25px;
+              border-bottom-left-radius: 25px;
+            }
+            .hori-selector .left,
+            .hori-selector .right{
+              right: 10px;
+            }
+            .hori-selector .left{
+              top: -25px;
+              left: auto;
+            }
+            .hori-selector .right{
+              bottom: -25px;
+            }
+            .hori-selector .left:before{
+              left: -25px;
+              top: -25px;
+            }
+            .hori-selector .right:before{
+              bottom: -25px;
+              left: -25px;
+            }
+          }
       </style>
       <script>
-             $(function(){
-                var str = '#len'; //increment by 1 up to 1-nelemnts
-                $(document).ready(function(){
-                  var i, stop;
-                  i = 1;
-                  stop = 4; //num elements
-                  setInterval(function(){
-                    if (i > stop){
-                      return;
-                    }
-                    $('#len'+(i++)).toggleClass('bounce');
-                  }, 500)
+             // ---------Responsive-navbar-active-animation-----------
+              function test(){
+                var tabsNewAnim = $('#navbarSupportedContent');
+                var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
+                var activeItemNewAnim = tabsNewAnim.find('.active');
+                var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+                var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+                var itemPosNewAnimTop = activeItemNewAnim.position();
+                var itemPosNewAnimLeft = activeItemNewAnim.position();
+                $(".hori-selector").css({
+                  "top":itemPosNewAnimTop.top + "px", 
+                  "left":itemPosNewAnimLeft.left + "px",
+                  "height": activeWidthNewAnimHeight + "px",
+                  "width": activeWidthNewAnimWidth + "px"
                 });
+                $("#navbarSupportedContent").on("click","li",function(e){
+                  $('#navbarSupportedContent ul li').removeClass("active");
+                  $(this).addClass('active');
+                  var activeWidthNewAnimHeight = $(this).innerHeight();
+                  var activeWidthNewAnimWidth = $(this).innerWidth();
+                  var itemPosNewAnimTop = $(this).position();
+                  var itemPosNewAnimLeft = $(this).position();
+                  $(".hori-selector").css({
+                    "top":itemPosNewAnimTop.top + "px", 
+                    "left":itemPosNewAnimLeft.left + "px",
+                    "height": activeWidthNewAnimHeight + "px",
+                    "width": activeWidthNewAnimWidth + "px"
+                  });
+                });
+              }
+              $(document).ready(function(){
+                setTimeout(function(){ test(); });
+              });
+              $(window).on('resize', function(){
+                setTimeout(function(){ test(); }, 500);
+              });
+              $(".navbar-toggler").click(function(){
+                setTimeout(function(){ test(); });
               });
 
       </script>
-     <div class="container-fluid">
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li><a id="len1" class="hoverable" href="#">Home</a></li>
-            <li><a id="len2" class="hoverable" href="#">About</a></li>
-            <li><a id="len3" class="hoverable" href="#">Portfolio</a></li>
-            <li><a id="len4" class="hoverable" href="#">Contact</a></li>
-          </ul>
+     <nav class="navbar navbar-expand-lg navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Address Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
+                </li>
+            </ul>
         </div>
-      </nav>
-      <div id="what-the-hell-is-this">
-        <div class="page-title">
-          <h2>Simple Navigation</h2>
-          <p class="lead">
-            Based on Hover.css, the goal of this pen
-            is to create a simple navigation bar <br />
-            that can be easily reused in both mobile and native displays. Mouse over the nav text for animation!
-          </p>
-        </div>
-      </div>
-    </div>
+    </nav>
 
