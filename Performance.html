@@ -1,41 +1,44 @@
 <h2>Performance</h2>
 <p>
 We test the data modeling strategy for three times with three different news. The performance is listed below. 
-
-<h3>News</h3>
-<ul>
-	<li>Get a $50 Microsoft Store gift card with Xbox </li>
-</ul>
-
-<table style="border: 1px solid black">
-	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td></tr>
-	<tr><td>Facebook</td><td>9</td><td>10</td></tr>
-	<tr><td>GooglePlus</td><td>2</td><td>3</td></tr>
-	<tr><td>LinkedIn</td><td>1</td><td>1</td></tr>
+<table>
+	<tr><td>News</td><td>Get a $50 Microsoft Store gift card with Xbox </td></tr>
+	<tr><td>Dataset size</td><td>212</td></tr>
+	<tr><td>Features</td><td>Source, SentimentTitle, SentimentHeadline</td></tr>
+	<tr><td>Predict</td><td>Popularity</td></tr>
 </table>
 
-<h3>News</h3>
-<ul>
-	<li>Windows 10 Mobile Build 10586.306 now being ... </li>
-</ul>
-
 <table style="border: 1px solid black">
-	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td></tr>
-	<tr><td>Facebook</td><td>23</td><td>3</td></tr>
-	<tr><td>GooglePlus</td><td>0</td><td>1</td></tr>
-	<tr><td>LinkedIn</td><td>0</td><td>0</td></tr>
+	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td><td>Average</td><td>Max</td><td>Min</td></tr>
+	<tr><td>Facebook</td><td>9</td><td>10</td><td>64.5</td><td>3832</td><td>0</td></tr>
+	<tr><td>GooglePlus</td><td>2</td><td>3</td><td>7.58</td><td>186</td><td>0</td></tr>
+	<tr><td>LinkedIn</td><td>1</td><td>1</td><td>22.7</td><td>438</td><td>0</td></tr>
 </table>
 
-<h3>News</h3>
-<ul>
-	<li>Xbox One Backward Compatibility: Two new games ... </li>
-</ul>
-
+<table>
+	<tr><td>News</td><td>Windows 10 Mobile Build 10586.306 now being ...</td></tr>
+	<tr><td>Dataset size</td><td>82</td></tr>
+	<tr><td>Features</td><td>Source, SentimentTitle, SentimentHeadline</td></tr>
+	<tr><td>Predict</td><td>Popularity</td></tr>
+</table>
 <table style="border: 1px solid black">
-	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td></tr>
-	<tr><td>Facebook</td><td>6</td><td>5</td></tr>
-	<tr><td>GooglePlus</td><td>0</td><td>0</td></tr>
-	<tr><td>LinkedIn</td><td>0</td><td>5</td></tr>
+	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td><td>Average</td><td>Max</td><td>Min</td></tr>
+	<tr><td>Facebook</td><td>23</td><td>3</td><td>60.5</td><td>1055</td><td>0</td></tr>
+	<tr><td>GooglePlus</td><td>0</td><td>1</td><td>6.8</td><td>234</td><td>0</td></tr>
+	<tr><td>LinkedIn</td><td>0</td><td>0</td><td>22.8</td><td>433</td><td>0</td></tr>
+</table>
+
+<table>
+	<tr><td>News</td><td>Xbox One Backward Compatibility: Two new games ...</td></tr>
+	<tr><td>Dataset size</td><td>87</td></tr>
+	<tr><td>Features</td><td>Source, SentimentTitle, SentimentHeadline</td></tr>
+	<tr><td>Predict</td><td>Popularity</td></tr>
+</table>
+<table style="border: 1px solid black">
+	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td><td>Average</td><td>Max</td><td>Min</td></tr>
+	<tr><td>Facebook</td><td>6</td><td>5</td><td>31.2</td><td>775</td><td>0</td></tr>
+	<tr><td>GooglePlus</td><td>0</td><td>0</td><td>5.4</td><td>181</td><td>0</td></tr>
+	<tr><td>LinkedIn</td><td>0</td><td>5</td><td>24.7</td><td>622</td><td>0</td></tr>
 </table>
 
 </p>
