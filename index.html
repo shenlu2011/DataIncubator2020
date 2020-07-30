@@ -2,8 +2,25 @@
 <html lang = "en">
    <head>
       <script src = "https://d3js.org/d3.v4.min.js"></script>
-      <script src = "main.js"></script>
+      
       <link rel="stylesheet" href="main.css">
+      <script>
+              $(function(){
+                var str = '#len'; //increment by 1 up to 1-nelemnts
+                $(document).ready(function(){
+                  var i, stop;
+                  i = 1;
+                  stop = 4; //num elements
+                  setInterval(function(){
+                    if (i > stop){
+                      return;
+                    }
+                    $('#len'+(i++)).toggleClass('bounce');
+                  }, 500)
+                });
+              });
+
+      </script>>
    </head>
 
    <body>
