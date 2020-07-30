@@ -1,1 +1,50 @@
-modeling
+
+<h2>Data Modeling</h2>
+<p>
+Based on this data, we can see it is a text mining task and also a classification task. We need to understand text and also use other features to label each data entry.
+
+</p>
+<table>
+	<tr>IDLink<td>Title</td><td>Headline</td><td>Source</td><td>Topic</td><td>PublishDate</td><td>SentimentTitle</td><td>SentimentHeadline</td><td>Facebook</td><td>GooglePlus</td><td>LinkedIn</td></tr>
+	<tr>88518<td>Israel denies permits to Gazans for Palestine Marathon</td><td>Israel denies permits to Gazans for Palestine Marathon. A Palestinian youth stands next to a national flag at the Palestinian side of Beit Hanoun</td><td>The Daily Star</td><td>palestine</td><td>3/31/2016  3:45:16 PM</td><td>0.100503782</td><td>0.150351633</td><td>24</td><td>5</td><td>2</td></tr>
+	<tr>87218<td>Local organizations join USDA for initiative to bolster region's ...</td><td>Local organizations join USDA for initiative to bolster region's economy. Story &middot; Comments. Print: Create a hardcopy of this page; Font Size:</td><td>Bristol Herald Courier (press release) (blog)</td><td>economy</td><td>3/31/16 15:54</td><td>-0.180421959</td><td>0.0875</td><td>12</td><td>8</td><td>0</td></tr>
+</table>
+
+<p>
+	For text mining, we can have two solutions
+	<ul>
+		<li>bag of words</li>
+		<p>we ignore the association between words in the article. We only care about the frequency of the words.</p>
+		<li>latent semantic analysis</li>
+		<p>we consider each article is the context of the words. the meaning of each word is based on the content of the current article. We project words into the semantic space of the current article. All the content of the article is reduced to several topics.</p>
+	</ul>
+	For popularity prediction, we choose Latent semantic analysis. 
+</p>
+<p>
+	For other features, such as Source, SentimentTitle, SentimentHeadline, we can directly use them to make prediction. 
+	Before we use choose classification algoritm, we evaluate the significance of the features with information gain. We get the following result.
+	<table>
+		<tr><td>Website</td><td>Source></td><td>SentimentTitle</td><td>SentimentHeadline</td></tr>
+		<tr><td>Facebook</td><td>0.6427983828436333></td><td>0.682137527933072</td><td>0.6065400706568865</td></tr>
+		<tr><td>GooglePlus</td><td>0.4545358118900283></td><td>0.48596147409162366</td><td>0.4117329019171993</td></tr>
+		<tr><td>LinkedIn</td><td>0.5177361250103715</td><td>0.5575869048549802</td><td>0.4672467847269911</td></tr>
+	</table>
+	The information gain shows use that these features are not very strongly related to targets. We don't have many features to choose. We don't have domain knowledge to add extra information into the feature set, either. We need to improve the quality of the raw data as much as possible.
+
+	Our solution is that we not only use latent semantic analysis to make the text feature more meaningful, also, based on the new data, we only use similar news to predict the label of the new data. In other words, we create a specific data set for each news we are going to classify. The data modeling process can be generalized but each model we generated is specified for the a particular news. We don't create a general model for all of the news, but, each model can classify the particular news better.
+
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
