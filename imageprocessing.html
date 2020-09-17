@@ -1,0 +1,57 @@
+<div id="top">
+In image processing, we focus on edge detection and object detection. For edge detection, we use Conditional Random Fields (CRF) to improve the existing edge detection methdology. We detect all edges with closed lines and without duplicate edges. For object detection, we add arbitrary features to the objects to deep learning model to enforce deep learning model to learn the characteristics of specific objects.
+<ul>
+	<li><a href="#edge-detection">Edge Detection</a></li>
+	<li><a href="#object-detection">Object Detection</a></li>
+</ul>
+</div>
+<div id="edge-detection">
+<h2>Edge Detection</h2>
+The challenge in line segmentation is that the threshold of the gradients have to be determined in the first place, a set of criteria  are needed to define the properties of line segments,  fractions of the image need to be detected, the validation of the line segment is also determined arbitrarily. We proposed a sematic line segmentation detection model based on conditional random fields (CRF) model. Based on the gradients of the image, this methodology does not require any prior knowledge about the image, no fraction selection, no threshold, no criteria for region growth and rectangle validation. 
+<h2>Methodology</h2>
+CRF model, as shown in figure 1, can be considered as Markov random fields model. The initial transition probability of each pixel is the same. During each iteration, the state function can average out the different among neighbors and the transition function update the featured pixels. Apparently, state function make the local pixels similar to each other. This operation is especially useful when some pixels are changed because of noise or system errors. When the significance of each pixel is computed not only with the value of the pixel itself but also the values of the adjacent neighbors, system errors and arbitrary noise can be average out. Feature function is defined with the features we pick so that it can consistently increase the significance of features and depress the significance of none features. 
+<div style="text-align:center">
+<img style="margin-left:auto;margin-right:auto;" src="images/CRF.png"></img>
+<p>Figure 1. Conditional Random Fields Model</p>
+</div>
+<h2>Performance</h2>
+We tested the methodology with several images, such as, the image of simple lines, the image of simple objects, and the portrait of a person. We use the same feature functions and the same Gaussian kernel to detection line segments in three different images. In figure 2(a)(b)(c), we compared out results with the ones generated with Linear Time Line Segmentation Detection (LTLSD) method.
+<div style="text-align: center">
+<img style="margin-left:auto;margin-right:auto;"  src="images/ip-lsd-lines.png"></img>
+<p>(a)</p>
+<img style="margin-left:auto;margin-right:auto;"  src="images/ip-lsd-chairs.png"></img>
+<p>(b)</p>
+<img style="margin-left:auto;margin-right:auto;"  src="images/ip-lsd-lena.png"></img>
+<p>(c)</p>
+<p>Figure 2. Comparison of CRF results with LTLSD results</p>
+</div>
+<p>In LTLSD result, as shown in figure 2(a), objects in the image are not closed. As shown in figure 2(b), many line segments are doubled which make the image not readable, some lines apparently are shadows but were extracted as lines. As shown in figure 2(c), in the background, a lot of lines are cut. Around the face and the hat, some small circles and short lines are not detected and some are not closed.
+<p><a href="#top">Top</a></p>
+</div>
+<div id="object-detection">
+<h2>Object Detection</h2>
+Deep learning is generally used in image recognition. For example, deep learning can recognize handwriting of 10 digital numbers in MNIST data set. Deep learning does not require pre-selected feature set for training, as shown in figure 1. During training, deep learning model repeatedly select features, evaluate the quality of the feature set and generate output for next layer. However, What exactly does the deep learning model learn from the training set?
+<div style="text-align:center">
+<img style="margin-left:auto;margin-right:auto;"  src="images/ip-deeplearning.png"></img>
+<p>Figure 1. Deep Learning Model</p>
+</div>
+In image processing, there are a lot of features in one image. It is information rich. Normally, one small detail is the combination of many pixels, which is too much for human to quantitatively check each one of the computation units - the pixels. 
+
+Deep learning model selects features from entire images. If there are some common patterns which can differentiate the ten categories, those patterns can be chosen as the feature set. Some features are related to the pictures, and some features are related to the objects, but, if we don't enforce the deep learning model to learn from objects, most of the features deep learning model learned are based on the pictures, which means deep learning model does not really learn the objects. This is major flaw in this process. If we change the background of the objects, deep learning can not recognize the objects any more.
+<h2>Methodology</h2>
+We add feature function to deep learning model so that deep learning model can be enforced to learn from the objects only, as shown in figure 2. 
+<div style="text-align:center">
+<img style="margin-left:auto;margin-right:auto;" src="images/ip-deeplearning-enforced.png"></img>
+<p>Figure 2. Feature Enforced Deep Learning Model</p>
+</div>
+<h2>Performance</h2>
+<div style="text-align: center">
+<img style="margin-left:auto;margin-right:auto;"  src="images/ip-2layer-original.png"></img>
+<p>(a) Output from Original Deep Learning Model</p>
+<img style="margin-left:auto;margin-right:auto;"  src="images/ip-2layer-enforced.png"></img>
+<p>(b) Output from Feature Enforced Deep Learning Model</p>
+<p>Figure 2. Comparison of Features in Decision layer</p> 
+</div>
+In the original output in figure 2(a), we can see some feature spots which are the common patterns in different images but those patterns are not meaningful. After we add feature filter to the deep learning model, the model only picks features from object regions and the output shows the features of the objects, as shown in figure 2(b). 
+<p><a href="#top">Top</a></p>
+</div>

@@ -1,0 +1,140 @@
+
+   
+
+<div class="container">
+	<script src="js/libraries/jquery/jquery.min.js"></script>
+    <script src="js/libraries/bootstrap/bootstrap.min.js"></script>
+    <script src="js/libraries/d3/d3.min.js"></script>
+    <script src="js/script.js"></script>
+</div>
+
+<div>
+<h2>Online News Popularity Prediction</h2>
+<p>
+We have online news from three different websites: Facebook, GooglePlus and LinkedIn. We want to find out, for any news, if we can predict its popularity, based on the popularity of the existing news. 
+
+This prediction model can be used for many different applications. such as 
+<ul>
+	<li>advertising</li>
+	<li>election campaign</li>
+	<li>posts recommendation</li>
+	<li>dynamic content management</li>
+</ul>
+
+</p>
+
+<h2>Sample Data</h2>
+<table style="border: 1px solid black">
+	<tr><td>IDLink</td><td>Title</td><td>Headline</td><td>Source</td><td>Topic</td><td>PublishDate</td><td>SentimentTitle</td><td>SentimentHeadline</td><td>Facebook</td><td>GooglePlus</td><td>LinkedIn</td></tr>
+	<tr><td>88518</td><td>Israel denies permits to Gazans for Palestine Marathon</td><td>Israel denies permits to Gazans for Palestine Marathon. A Palestinian youth stands next to a national flag at the Palestinian side of Beit Hanoun</td><td>The Daily Star</td><td>palestine</td><td>3/31/2016  3:45:16 PM</td><td>0.100503782</td><td>0.150351633</td><td>24</td><td>5</td><td>2</td></tr>
+	<tr><td>87218</td><td>Local organizations join USDA for initiative to bolster region's ...</td><td>Local organizations join USDA for initiative to bolster region's economy. Story &middot; Comments. Print: Create a hardcopy of this page; Font Size:</td><td>Bristol Herald Courier (press release) (blog)</td><td>economy</td><td>3/31/16 15:54</td><td>-0.180421959</td><td>0.0875</td><td>12</td><td>8</td><td>0</td></tr>
+</table>
+</div>
+
+<div>
+<h2>Data Modeling</h2>
+<p>
+Based on this data, we can see it is both a text mining task and also a classification task. We need to understand text and also use other features to label each data entry. The data model is built in the following steps:
+
+<ul>
+	<li>Build semantic space</li>
+	<li>Generate topics which can be used to define news</li>
+	<li>Generate sample set for a given news</li>
+	<li>Remove Outliers</li>
+	<li>KNN Classification</li>
+	<li>Adjust parameters for better results</li>
+	<li>Interpret results</li>
+</ul>
+</p>
+<p>
+	For text mining, we can have two solutions
+	<ul>
+		<li>Bag of words</li>
+		<li>Latent Semantic Analysis (LSA)</li>
+	</ul>
+	For popularity prediction, we choose Latent semantic analysis. 
+</p>
+<p>
+	For other features, such as Source, SentimentTitle, SentimentHeadline, we can directly use them to make prediction. 
+	Before we use choose classification algoritm, we evaluate the significance of the features with information gain, as listed below:
+	<table style="border: 1px solid black">
+		<tr><td>Website</td><td>Source</td><td>SentimentTitle</td><td>SentimentHeadline</td></tr>
+		<tr><td>Facebook</td><td>0.6427983828436333></td><td>0.682137527933072</td><td>0.6065400706568865</td></tr>
+		<tr><td>GooglePlus</td><td>0.4545358118900283></td><td>0.48596147409162366</td><td>0.4117329019171993</td></tr>
+		<tr><td>LinkedIn</td><td>0.5177361250103715</td><td>0.5575869048549802</td><td>0.4672467847269911</td></tr>
+	</table>
+	The information gain shows use that these features are not very strongly related to the prediction. We don't have many features to choose. We don't have domain knowledge to add extra information into the feature set, either. We need to improve the quality of the raw data as much as possible.
+
+	Our solution is that we not only use latent semantic analysis to make the text feature more meaningful, also, based on the new data, we only use similar news to predict the label of the new data. In other words, we create a specific data set for each news we are going to classify. The data modeling process can be generalized but each model we generated is specified for the a particular news. We don't create a general model for all of the news, but, each model can classify the particular news better.
+
+</p>
+
+</div>
+
+<div>
+<h2>Latent Semantic Analysis</h2>
+<p>
+	Latent semantic analysis (LSA) is a technique for text processing. The idea behind latent semantic analysis is that, in psychology, we consider people learn language through words instead of grammar. Think about how babies learn languages. They just put words together and it is going to make sense. However, the context of the words can not be ignored, although we can ignore the grammar. 
+	Each word can have multiple meanings in different context and different words can have the same meanings in the same context. This is the most confusing part in text mining, which almost makes it impossible to process the text. However, when LSA comes into play, the myth is deciphered. The way it works is straightforward that it simplifies the content. The formula of LSA is listed below.
+</p>
+	<image style="width:700px;height:200px;border-width:1px;left:20px;position:relative;" src="images/LSA.png" ></image>
+<p>
+	The matrix in the middle on the right side of equal symbol is for topics. We start with all the text and it ends up with we project text into several topics and thos topics are related to the text content.
+</p>
+</div>
+
+<div>
+<h2>Performance</h2>
+<p>
+We test the data modeling strategy for three times with three different news. The performance is listed below. 
+</p>
+<h2>Experiment 1</h2>
+<table>
+	<tr><td>News</td><td>Get a $50 Microsoft Store gift card with Xbox </td></tr>
+	<tr><td>Dataset size</td><td>7942</td></tr>
+	<tr><td>After Sample Selection</td><td>212</td></tr>
+	<tr><td>Features</td><td>Source, SentimentTitle, SentimentHeadline</td></tr>
+	<tr><td>Predict</td><td>Popularity</td></tr>
+</table>
+
+<table style="border: 1px solid black">
+	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td><td>Average</td><td>Max</td><td>Min</td></tr>
+	<tr><td>Facebook</td><td>9</td><td>10</td><td>64.5</td><td>3832</td><td>0</td></tr>
+	<tr><td>GooglePlus</td><td>2</td><td>3</td><td>7.58</td><td>186</td><td>0</td></tr>
+	<tr><td>LinkedIn</td><td>1</td><td>1</td><td>22.7</td><td>438</td><td>0</td></tr>
+</table>
+</div>
+
+<div>
+<h2>Experiment 2</h2>
+<table>
+	<tr><td>News</td><td>Windows 10 Mobile Build 10586.306 now being ...</td></tr>
+	<tr><td>Dataset size</td><td>7942</td></tr>
+	<tr><td>After Sample Selection</td><td>82</td></tr>
+	<tr><td>Features</td><td>Source, SentimentTitle, SentimentHeadline</td></tr>
+	<tr><td>Predict</td><td>Popularity</td></tr>
+</table>
+<table style="border: 1px solid black">
+	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td><td>Average</td><td>Max</td><td>Min</td></tr>
+	<tr><td>Facebook</td><td>23</td><td>3</td><td>60.5</td><td>1055</td><td>0</td></tr>
+	<tr><td>GooglePlus</td><td>0</td><td>1</td><td>6.8</td><td>234</td><td>0</td></tr>
+	<tr><td>LinkedIn</td><td>0</td><td>0</td><td>22.8</td><td>433</td><td>0</td></tr>
+</table>
+
+<h2>Experiment 3</h2>
+<table>
+	<tr><td>News</td><td>Xbox One Backward Compatibility: Two new games ...</td></tr>
+	<tr><td>Dataset size</td><td>7942</td></tr>
+	<tr><td>After Sample Selection</td><td>87</td></tr>
+	<tr><td>Features</td><td>Source, SentimentTitle, SentimentHeadline</td></tr>
+	<tr><td>Predict</td><td>Popularity</td></tr>
+</table>
+<table style="border: 1px solid black">
+	<tr><td>Source</td><td>Actual Score</td><td>Predicted Score</td><td>Average</td><td>Max</td><td>Min</td></tr>
+	<tr><td>Facebook</td><td>6</td><td>5</td><td>31.2</td><td>775</td><td>0</td></tr>
+	<tr><td>GooglePlus</td><td>0</td><td>0</td><td>5.4</td><td>181</td><td>0</td></tr>
+	<tr><td>LinkedIn</td><td>0</td><td>5</td><td>24.7</td><td>622</td><td>0</td></tr>
+</table>
+
+</p>
+</div>
