@@ -1,0 +1,166 @@
+
+   
+
+<div class="container">
+	<script src="js/libraries/jquery/jquery.min.js"></script>
+    <script src="js/libraries/bootstrap/bootstrap.min.js"></script>
+    <script src="js/libraries/d3/d3.min.js"></script>
+    <script src="js/script.js"></script>
+</div>
+
+<div>
+<h2>Predicitng Taxi-passenger Demand Using Streaming Data</h2>
+<p>
+If we want to go from place to place, how many operations can we have? Long time ago, we walked. Later on, we rode horses. After that, we rode bicycles. In the modern days, we drive car. 
+
+Can transportation make any difference to our life? The answer is yes. For example, in a city with 382 million people and 175.8 square miles area, we can use several numbers to show differences.
+</p>
+<p>
+If we walk, we can 
+<ul>
+	<li>walk 3.5 miles per hour</li>
+	<li>see about 5000 people in our life.</li>
+	<li>shop in 1 mall and 5 grocery stores</li>
+	<li>work for 5 businesses</li>
+</ul>
+If we ride horses or bicycles, we can 
+<ul>
+	<li>go 35 miles per hour</li>
+	<li>see about 50,000 people in our life.</li>
+	<li>shop in 10 mall and 100 grocery stores</li>
+	<li>work for 100 businesses</li>
+</ul>
+If we drive cars, we can 
+<ul>
+	<li>walk 120 miles per hour</li>
+	<li>see about 500,00 people in our life.</li>
+	<li>shop in more than 100 mall and more than 1000 grocery stores</li>
+	<li>work for more than 1000 businesses</li>
+</ul>
+
+</p>
+<h3>What is the transportation system we need?</h3>
+<ul>
+	<li>Reduce traffic congestion </li>
+	<li>Reduce carbon emission </li>
+	<li>Improve the quality of life </li> 
+	<li>Efficiency </li>
+	<li>Low cost </li>
+</ul>
+
+<h2>Cost of Transportation</h2>
+<img src="images/total-cost.png"></div>
+<H3>Individual Car Ownership: $550 -600 per month</H3>
+<ul>
+	<li>Vehicle depreciation/lease $270 per month</li>
+	<li>Insurance: $100 per month</li>
+	<li>Parking: $10 - $100 per month</li>
+	<li>Gas: $50 per month</li>
+	<li>Maintenance: $30 per month</li>
+</ul>
+<h3>Organized Car sharing : $85 per month</h3>
+<ul>
+	<li>Application fee: $25 per month</li>
+	<li>membership fee: $10 per month</li>
+	<li>Per mile charge: $0.4</li>
+	<li>Per hour charge: $5.5</li>
+	<li>Miles: 100 miles per month</li>
+</ul>
+<h3>Taxi: $250 per month</h3>
+<ul>
+	<li>Per mile charge: $2.5</li>
+	<li>Miles: 100 miles per month</li>
+</ul>
+<p>
+In future, organized car sharing would be the option. However, we need to figure out how to manage organized car sharing business. If we all share cars with each other and we all become our own bosses, we need to know how to increase revenue and decrease cost.
+</p>
+<h3>Significant Factors in Transportation Management</h3>
+<ul>
+	<li>Expected revenue for a service over time</li>
+	<li>Distance/cost relation with each stand</li>
+	<li>The number of taxis that are already waiting at each stand</li>
+	<li>The passenger demand for each stand over time</li>
+</ul>
+</div>
+
+<div>
+<h2>Taxi Trip Planning with Hidden Markov Model (HMM)</h2>
+This problem is one of chanllenges at Kaggle (https://www.kaggle.com/crailtap/taxi-trajectory) also at ECML PKDD 2015 (http://www.geolink.pt/ecmlpkdd2015-challenge/index.html). We have the the trajactories for all the taxis running in the city of Porto, in Portugal from 07/01/2013 to 06/30/2014. We list some sample data below.
+<p>
+<table style="width: 500px">
+<tr>
+<th style="width:50px">Attribute Name</th>
+<th style="width:450px">Values</th>
+</tr>
+<tr>
+<td>TRIP_ID</td><td>1372636858620000000
+</td>	
+</tr>
+<tr>
+<td>CALL_TYPE</td><td>A</td>	
+</tr>
+<tr>
+<td>ORIGIN_CALL</td><td></td>	
+</tr>
+<tr>
+<td>ORIGIN_STAND</td><td></td>	
+</tr>
+<tr>
+<td>TAXI_ID</td><td></td>	
+</tr>
+<tr>
+<td>TIMESTAMP</td><td>1372636858</td>	
+</tr>
+<tr>
+<td>DAY_TYPE</td><td>A</td>	
+</tr>
+<tr>
+<td>MISSING_DATA</td><td></td>	
+</tr>
+<tr>
+<td>POLYLINE</td><td>[[-8.618643, 41.141412], [-8.618499, 41.141376], [-8.620326, 41.14251], [-8.622153, 41.143815], [-8.623953, 41.144373], [-8.62668, 41.144777999999995], [-8.627373, 41.144697], [-8.630226, 41.145210000000006], [-8.632746, 41.14692], [-8.631738, 41.148225], [-8.629938000000001, 41.150385], [-8.62911, 41.151213], [-8.629128, 41.15124], [-8.628786, 41.152203], [-8.628687, 41.15237400000001], [-8.628759, 41.15251799999999], [-8.630838, 41.152680000000004], [-8.632323, 41.153022], [-8.631144, 41.154489], [-8.630828999999999, 41.154507], [-8.630828999999999, 41.154515999999994], [-8.630828999999999, 41.154498000000004], [-8.630838, 41.154489]]
+</td>	
+</tr>
+</table>
+</p>
+</div>
+
+<div>
+<h3>Data Modeling</h3>
+<p>We collect all of the taxi stands and the moves of all of the taxis every 0.25 second. We want to find the shortest path for the next move to minimize gas cost and maximize revenue. Other than the distances between taxi stands and the chances of moving from one stand to another, we also need to consider if the trip is caused by a passenger call or not.
+</p>
+<img style="with:350px;height:350px" src="images/markov.png"></img>
+<h3>Data Visualization</h3>
+<p>
+For all of existing data, we visualize all of the trips below.
+<img style="with:350px;height:350px" src="images/trips_all.png"></img>
+</p>
+<p>
+We also randomly select several trips and visualized them below. Most of the trips have circles and curves which are not supposed to happen and cost extra gas. That is the part we need to work on. After we use HMM to estimate the shortest path, the circles and curves can be efficiently reduced.
+<img style="with:350px;height:350px" src="images/trips_individual.png"></img>
+</p>
+<h3>Experiment</h3>
+We pick several locations and use the model we trained to plan the trip for us.
+
+<h3>Locations</h3>
+<ur>
+	<li>[-8.639118, 41.162679]</li>
+	<li>[-8.639118, 41.153184]</li>
+	<li>[-8.609373, 41.155839]</li>
+	<li>[-8.655336, 41.172849]</li>
+	<li>[-8.610282, 41.150322]</li>
+	<li>[-8.613225, 41.15439]</li>
+</ur>
+<h3>Suggested Trips at Different Moments</h3>
+<p>
+By using HMM we train, we get several potential trips for different moments. 
+<img style="with:350px;height:350px" src="images/trips_suggested_seg.png"></img>
+</p>
+<p>
+If we put all of the segments together, we can have the entire trips. 
+<img style="with:350px;height:350px" src="images/trips_suggested_all.png"></img>
+</p>
+
+</div>
+
+
